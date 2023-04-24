@@ -41,11 +41,31 @@ CREATE TABLE products (
 );
 
 CREATE TABLE messages (
-    id serial NOT NULL,
+    id serial PRIMARY KEY,
     product_id int NOT NULL,
     content varchar(256) NOT NULL,
     sent_by int NOT NULL,
     sent_at timestamp NOT NULL DEFAULT now(),
+    reaction_id int DEFAULT NULL,
     FOREIGN KEY (sent_by) REFERENCES users(id),
-    FOREIGN KEY (product_id) REFERENCES products(id)
+    FOREIGN KEY (product_id) REFERENCES products(id),
+    FOREIGN KEY (reaction_id) REFERENCES reactions(id)
+);
+
+CREATE TABLE reactions (
+    id serial PRIMARY KEY,
+    name varchar(32) NOT NULL,
+    description varchar(64) NOT NULL
+);
+
+CREATE TYPE notification_type AS ENUM ('MSG', 'REACTION_SELECTED', 'REACTION_UPDATED');
+
+CREATE TABLE notifications (
+    id serial PRIMARY KEY,
+    to int NOT NULL,
+    from int NOT NULL,
+    type notification_type NOT NULL,
+    fired_at timestamp NOT NULL DEFAULT now(),
+    FOREIGN KEY (to) REFERENCES users(id),
+    FOREIGN KEY (from) REFERENCES users(id)
 );
