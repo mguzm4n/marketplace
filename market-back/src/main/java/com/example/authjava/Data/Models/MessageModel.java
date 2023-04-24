@@ -2,10 +2,10 @@ package com.example.authjava.Data.Models;
 
 
 import lombok.*;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.Date;
 
 @Entity
 @Table(name = "messages")
@@ -22,6 +22,9 @@ public class MessageModel {
 
     @NonNull
     String content;
+
+    @Nullable
+    Long reactionId;
 
     @Column(insertable = false)
     Timestamp sentAt;
