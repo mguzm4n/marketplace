@@ -1,0 +1,82 @@
+/* color palette from <https://github.com/vuejs/theme> */
+:root, :root.light {
+  --navbar-height: 45px;
+
+  --blue-950: #172554;
+
+  --white: #ffffff;
+  --white-soft: #f8f8f8;
+  --white-mute: #f2f2f2;
+
+  --black: #181818;
+  --black-soft: #222222;
+  --black-mute: #282828;
+
+  --indigo: #2c3e50;
+  --indigo-800: #3730a3;
+
+  --dark-primary: #121212;
+  --dark-secondary: #1e1e1e;
+
+  --bg-color: var(--white);
+  --main-bg-color: var(--white-soft);
+  --all-text-color: var(--black);
+
+  --post-btn-color: var(--indigo-800);
+  --btn-primary: var(--indigo-800);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: var(--dark-primary);
+    --main-bg-color: var(--dark-secondary);
+    --all-text-color: var(--white);
+  }
+}
+
+:root.dark {
+  --bg-color: var(--dark-primary);
+  --main-bg-color: var(--dark-secondary);
+  --all-text-color: var(--white);
+}
+ul, li {
+  text-decoration: none;
+  list-style: none;
+}
+
+button {
+  padding: 0;
+  margin: 0;
+  font-size: inherit;
+  color: inherit;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  font-weight: normal;
+}
+
+#app {
+  width: 100%;
+}
+
+
+body {
+  font-size: 16px;
+  font-family: 'Inter', sans-serif;
+
+  color: var(--all-text-color);
+  background-color: var(--bg-color);
+}
+
